@@ -30,11 +30,11 @@
 
 ## 3. API接口文档
 
-[项目API接口文档](https://github.com/W-Qing/Vue-MintShop/blob/master/mintshop-server/API.md)
+[项目API接口文档](https://github.com/tmflsby/Vue-MintShop/blob/master/mintshop-server/API.md)
 
 ## 4. 项目开发
 
-[完整项目开发流程说明文档](https://github.com/W-Qing/Vue-MintShop/blob/master/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B.md)
+[完整项目开发流程说明文档](https://github.com/tmflsby/Vue-MintShop/blob/master/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B.md)
 
 ## 5. 运行项目
 
