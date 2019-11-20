@@ -52,11 +52,11 @@
 
 ## 6. App演示截图
 
-![Msite首页](./Images/Msite.png)
+![Msite首页](./Images/msite.png)
 ![Search搜索页](./Images/Search.png)
 ![Order订单页](./Images/Order.png)
-![Profile个人页](./Images/Profile.png)
-![Login登录页](./Images/Login.png)
+![Profile个人页](./Images/profile.png)
+![Login登录页](./Images/login.png)
 ![Shop商店页](./Images/Shop.png)
 
 
