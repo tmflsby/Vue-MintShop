@@ -52,9 +52,12 @@
 
 ## 6. App演示截图
 
-![Msite首页](./Images/msite.png)
-![Profile个人页](./Images/profile.png)
-![login](./Images/login.png)
-![food](./Images/food.png)
+![Msite首页](./Images/Msite.png)
+![Search搜索页](./Images/Search.png)
+![Order订单页](./Images/Order.png)
+![Profile个人页](./Images/Profile.png)
+![Login登录页](./Images/Login.png)
+![Shop商店页](./Images/Shop.png)
+
 
 
