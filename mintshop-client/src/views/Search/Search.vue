@@ -2,7 +2,7 @@
     <div class="search">
         <HeaderTop title="搜索"></HeaderTop>
         <form action="" class="search_form" @submit.prevent="search">
-            <input type="search" class="search_input" placeholder="请输入商家或美食名称" v-model="keyword">
+            <input type="search" class="search_input" placeholder="请输入商家或美食名称" v-model.trim="keyword">
             <input type="submit" class="search_submit">
         </form>
         <section class="list" ref="list">

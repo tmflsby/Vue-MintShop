@@ -113,7 +113,7 @@ export default {
         //为getShopRatings这个action添加回调函数
         this.$store.dispatch('getShopRatings', () => {
             this.$nextTick(() => {
-                new BScroll(this.$refs.ratings, {
+                this.bscroll = new BScroll(this.$refs.ratings, {
                     click: true
                 })
             })
@@ -125,6 +125,9 @@ export default {
         },
         toggleOnlyShowText () {
             this.onlyShowText = !this.onlyShowText
+            this.$nextTick(() => {
+                this.bscroll.refresh()
+            })
         }
     },
     // 可以在这里自己写过滤器

@@ -86,7 +86,7 @@ export default {
             const {scrollY, tops} = this
             //根据条件计算产生一个结果
             const index = tops.findIndex((top, index) => {
-                // scrollY>=当前top && scrollY<下一个to
+                // scrollY >= 当前top && scrollY < 下一个top
                 return scrollY >= top && scrollY < tops[index + 1]
             })
             // 返回结果(也就是当前的scrollY值属于第几个li区间)
@@ -104,7 +104,7 @@ export default {
     },
     methods: {
         _initBScroll() {  // 初始化滚动
-            new BScroll('.menu-wrapper', {
+            this.menuBScroll = new BScroll('.menu-wrapper', {
                 click: true
             })
             this.foodsBScroll = new BScroll('.foods-wrapper', {
@@ -148,7 +148,7 @@ export default {
             // 立即更新scrollY(让点击的分类项成为当前分类)
             this.scrollY = scrollY
             // 平滑滑动右侧列表 better-scroll里的方法
-            console.log(this.foodsBScroll);
+            // console.log(this.foodsBScroll);
             this.foodsBScroll.scrollTo(0, -scrollY, 300)
         },
         //显示点击的food

@@ -42,19 +42,19 @@ const routes = [
   },
   {
     path: '/shop',
-    component: () => import('../views/Shop/Shop.vue'),
+    component: () => import('@/views/Shop/Shop.vue'),
     children: [
       {
         path: '/shop/goods',
-        component: () => import('../views/Shop/ShopGoods/ShopGoods.vue')
+        component: () => import('@/views/Shop/ShopGoods/ShopGoods.vue')
       },
       {
         path: '/shop/ratings',
-        component: () => import('../views/Shop/ShopRatings/ShopRatings.vue')
+        component: () => import('@/views/Shop/ShopRatings/ShopRatings.vue')
       },
       {
         path: '/shop/info',
-        component: () => import('../views/Shop/ShopInfo/ShopInfo.vue')
+        component: () => import('@/views/Shop/ShopInfo/ShopInfo.vue')
       },
       {
         path: '',

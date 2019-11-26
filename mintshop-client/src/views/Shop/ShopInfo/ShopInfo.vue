@@ -85,7 +85,9 @@ export default {
     },
     methods: {
         _initBScroll () {
-            new BScroll('.shop-info')
+            new BScroll('.shop-info', {
+                click: true
+            })
             //动态计算ul的宽度
             const ul = this.$refs.picsUl
             const liWidth = 120
@@ -94,6 +96,7 @@ export default {
             ul.style.width = (liWidth + space) * count - space + 'px'
 
             new BScroll('.pic-wrapper', {
+                click: true,
                 scrollX: true  //水平滑动
             })
         }

@@ -89,12 +89,12 @@ export default {
         isShow () {
             if (this.isShow) {
                 this.$nextTick(() => {
-                    if (!this.scroll) {
-                        this.scroll = new BScroll('.list-content', {
+                    if (!this.bscroll) {
+                        this.bscroll = new BScroll('.list-content', {
                             click: true
                         })
                     } else {
-                        this.scroll.refresh()  // 让滚动条刷新一下: 重新统计内容的高度
+                        this.bscroll.refresh()  // 让滚动条刷新一下: 重新统计内容的高度
                     }
                 })
             }

@@ -31,6 +31,7 @@ export default {
         if (!food.count) { //第一次增加
             /** Vue.set( target, propertyName/index, value ) */
             Vue.set(food, 'count', 1) // 让新增的属性也有数据绑定
+            // console.log('food :', food);
             state.cartFoods.push(food)
         } else {
             food.count++
