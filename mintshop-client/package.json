@@ -23,7 +23,6 @@
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-service": "^4.0.0",
     "babel-plugin-component": "^1.1.1",
-    "mime": ">=1.4.1",
     "serialize-javascript": ">=2.1.1",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",

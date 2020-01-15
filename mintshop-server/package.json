@@ -32,6 +32,7 @@
     "is-accessor-descriptor": "^3.0.1",
     "is-data-descriptor": "^2.0.0",
     "is-extendable": "^1.0.1",
+    "mime": ">=1.4.1",
     "mixin-deep": "^2.0.0",
     "nodemon": "^1.18.10",
     "repeat-element": "^1.1.3",
