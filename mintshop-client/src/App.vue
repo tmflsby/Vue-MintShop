@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view/>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
     <FooterGuide v-show="$route.meta.showFooter"></FooterGuide>
   </div>
 </template>
@@ -14,13 +16,13 @@ export default {
   },
   async mounted() {
     // 通过this.$store.dispatch 方法触发调用Action
-    this.$store.dispatch('getAddress')
+    this.$store.dispatch('getAddress');
 
     // this.getAddress()
     this.getUserInfo()
   },
   methods: {
-    ...mapActions(['getUserInfo'])  
+    ...mapActions(['getUserInfo'])
   }
 }
 </script>

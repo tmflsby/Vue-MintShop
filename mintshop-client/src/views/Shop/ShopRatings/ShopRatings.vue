@@ -91,16 +91,16 @@ export default {
         ...mapState(['info', 'ratings']),
         filterRatings () {
             //得到相关的数据
-            const {ratings, onlyShowText, selectType} = this
+            const {ratings, onlyShowText, selectType} = this;
 
             //产生一个过滤新数组
             return ratings.filter(rating => {
-                const {rateType, text} = rating
+                const {rateType, text} = rating;
                 /**
-                 * 条件1： 
+                 * 条件1：
                  * selectType：0/1/2 全部 || 满意、不满意的一种
                  * rateType: 0/1  selectType === 2 || selectType === rateType
-                 * 
+                 *
                  * 条件2：
                  * onlyShowText: true/false  符合条件一的全部评价 || 符合条件一的有文字的评价
                  * text: 有值/没值  !onlyShowText || text.length>0
@@ -124,7 +124,7 @@ export default {
             this.selectType = selectType
         },
         toggleOnlyShowText () {
-            this.onlyShowText = !this.onlyShowText
+            this.onlyShowText = !this.onlyShowText;
             this.$nextTick(() => {
                 this.bscroll.refresh()
             })

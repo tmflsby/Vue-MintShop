@@ -107,13 +107,13 @@ export default {
       HeaderTop
     },
     computed: {
-      ...mapState(['userInfo'])      
+      ...mapState(['userInfo'])
     },
     methods: {
       logout () {
         MessageBox.confirm('确定退出吗？').then(action => {
           //请求退出
-          this.$store.dispatch('logout')
+          this.$store.dispatch('logout');
           Toast('退出成功')
         }, action => {
             console.log('取消登录');

@@ -5,7 +5,7 @@
             <div ref="menu-wrapper" class="menu-wrapper">
                 <!-- 菜单对应的是食物分类列表-->
                 <ul>
-                    <li class="menu-item" v-for="(good, index) in goods" :key="index" 
+                    <li class="menu-item" v-for="(good, index) in goods" :key="index"
                     :class="{current: index === currentIndex}" @click="clickMenuItem(index)"
                     >
                         <span class="text bottom-border-1px">
@@ -24,7 +24,7 @@
                         <h1 class="title">{{good.name}}</h1>
                         <ul>
                             <!--为每个食品li添加点击事件 触发显示Food弹窗-->
-                            <li class="food-item bottom-border-1px" v-for="(food, index) in good.foods" 
+                            <li class="food-item bottom-border-1px" v-for="(food, index) in good.foods"
                             :key="index" @click="showFood(food)"
                             >
                                 <div class="icon">
@@ -51,7 +51,7 @@
                 </ul>
             </div>
             <!-- 底部的shopCart -->
-            <shopCart></shopCart>
+            <ShopCart></ShopCart>
         </div>
         <!-- 该组件与goods同级 -->
         <Food :food='food' ref="food"></Food>
@@ -59,9 +59,9 @@
 </template>
 
 <script>
-import shopCart from '@/components/ShopCart/ShopCart';
+import ShopCart from '@/components/ShopCart/ShopCart'
 import Food from '@/components/Food/Food'
-import CartControl from '@/components/CartControl/CartControl';
+import CartControl from '@/components/CartControl/CartControl'
 import BScroll from '@better-scroll/core'
 import {mapState} from 'vuex'
 export default {
@@ -69,7 +69,7 @@ export default {
     components: {
         CartControl,
         Food,
-        shopCart
+        ShopCart
     },
     data() {
         return {
@@ -83,12 +83,12 @@ export default {
         // 计算得到当前分类的下标
         currentIndex () { // 初始和相关数据发生了变化
             //得到条件数据
-            const {scrollY, tops} = this
+            const {scrollY, tops} = this;
             //根据条件计算产生一个结果
             const index = tops.findIndex((top, index) => {
                 // scrollY >= 当前top && scrollY < 下一个top
                 return scrollY >= top && scrollY < tops[index + 1]
-            })
+            });
             // 返回结果(也就是当前的scrollY值属于第几个li区间)
             return index
         }
@@ -97,7 +97,7 @@ export default {
         // 使用 axios 请求 mockjs 提供的接口
         this.$store.dispatch('getShopGoods', () => {  //数据更新后执行
             this.$nextTick(() => {  // 列表数据更新显示后执行
-                this._initBScroll()
+                this._initBScroll();
                 this._initTops()
             })
         })
@@ -106,17 +106,17 @@ export default {
         _initBScroll() {  // 初始化滚动
             this.menuBScroll = new BScroll('.menu-wrapper', {
                 click: true
-            })
+            });
             this.foodsBScroll = new BScroll('.foods-wrapper', {
                 probeType: 2,  // 因为惯性滑动不会触发
                 click: true
-            })
+            });
 
             // 给右侧列表绑定scroll监听
             this.foodsBScroll.on('scroll', ({x, y}) =>  {
                 // console.log(x, y);
                 this.scrollY = Math.abs(y)
-            })
+            });
             // 给右侧列表绑定scroll结束的监听
             this.foodsBScroll.on('scrollEnd', ({x, y}) => {
                 // console.log('scrollEnd', x, y);
@@ -125,28 +125,28 @@ export default {
         },
         _initTops() {  // 初始化tops
             //1.初始化tops
-            const tops = []
-            let top = 0
+            const tops = [];
+            let top = 0;
             //第一个li的top为0
-            tops.push(top)
+            tops.push(top);
             //2.收集
             //在foods列表下找到所有分类的li
-            const lis = this.$refs.foodsUl.getElementsByClassName('food-list-hook')
+            const lis = this.$refs.foodsUl.getElementsByClassName('food-list-hook');
             // console.log(lis);
             // console.log(Array.prototype.slice.call(lis));
             Array.prototype.slice.call(lis).forEach(li => {
-                top += li.clientHeight
+                top += li.clientHeight;
                 tops.push(top)
-            })
+            });
             // console.log(tops);
             //3.更新数据
             this.tops = tops
         },
         clickMenuItem(index) {
             // 得到目标位置的scrollY
-            const scrollY =  this.tops[index]
+            const scrollY =  this.tops[index];
             // 立即更新scrollY(让点击的分类项成为当前分类)
-            this.scrollY = scrollY
+            this.scrollY = scrollY;
             // 平滑滑动右侧列表 better-scroll里的方法
             // console.log(this.foodsBScroll);
             this.foodsBScroll.scrollTo(0, -scrollY, 300)
@@ -154,7 +154,7 @@ export default {
         //显示点击的food
         showFood (food) {
             //设置要传递给food组件的数据
-            this.food = food
+            this.food = food;
             //显示food组件（在父组件中调用子组件对象的方法）
             this.$refs.food.toggleShow()
         }

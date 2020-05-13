@@ -24,7 +24,7 @@
                             <span>{{item.title}}</span>
                         </a>
                     </swiper-slide>
-                    
+
                     <!-- Optional controls -->
                     <div class="swiper-pagination"  slot="pagination" v-if="categorysArr.length > 1"></div>
                 </swiper>
@@ -70,9 +70,9 @@ export default {
        * 根据categorys一维数组生成一个2维数组,小数组中的元素个数最大是8
        */
       categorysArr () {
-        const {categorys} = this
-        const arr = []
-        let minArr = []
+        const { categorys } = this;
+        const arr = [];
+        let minArr = [];
         categorys.forEach(data => {
           if (minArr.length === 8) {
             minArr = []
@@ -81,7 +81,7 @@ export default {
             arr.push(minArr)
           }
           minArr.push(data)
-        })
+        });
         return arr
       },
       // categorysArr () {
@@ -100,7 +100,7 @@ export default {
     //   ...mapActions(['getAddress'])
     // },
     mounted() {
-      this.$store.dispatch('getCategorys')
+      this.$store.dispatch('getCategorys');
       this.$store.dispatch('getShops')
     },
     // watch: {

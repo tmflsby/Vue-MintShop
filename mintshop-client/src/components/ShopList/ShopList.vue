@@ -35,9 +35,9 @@
             </li>
         </ul>
         <ul v-else>
-          <li v-for="item in 6" :key="item">
-            <img src="./images/shop_back.svg" alt="back">
-          </li>
+            <li v-for="item in 6" :key="item">
+                <img src="./images/shop_back.svg" alt="back">
+            </li>
         </ul>
     </div>
 </template>
@@ -49,7 +49,7 @@ export default {
     name: 'ShopList',
     data() {
       return {
-        baseImgUrl: 'https://raw.githubusercontent.com/W-Qing/Vue-MintShop/master/mintshop-client/src/components/ShopList/images/'
+        baseImgUrl: './images/'
       }
     },
     computed: {
@@ -58,7 +58,7 @@ export default {
     components: {
       Star
     }
-    
+
 }
 </script>
 

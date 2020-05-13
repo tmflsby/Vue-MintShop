@@ -6,9 +6,9 @@
 
 <script>
 // 类名常量
-const CLASS_ON = 'on'
-const CLASS_HALF = 'half'
-const CLASS_OFF = 'off'
+const CLASS_ON = 'on';
+const CLASS_HALF = 'half';
+const CLASS_OFF = 'off';
 export default {
     name: 'Star',
     props: {
@@ -22,10 +22,10 @@ export default {
          * 该方法产生一个数组starArr来表示on half off类名的span数量（总长度为5）
          */
         starClasses () {
-            const {score} = this
-            const starArr = []
+            const { score } = this;
+            const starArr = [];
             // 向starArr中添加n个CLASS_ON
-            const scoreInteger = Math.floor(score)
+            const scoreInteger = Math.floor(score);
             for (let i = 0; i < scoreInteger; i++) {
                 starArr.push(CLASS_ON)
             }

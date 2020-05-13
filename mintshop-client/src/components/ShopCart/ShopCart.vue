@@ -13,7 +13,7 @@
                     <div class="desc">另需配送费￥{{info.deliveryPrice}}元</div>
                 </div>
                 <div class="content-right">
-                    <div class="pay" :class="payClass">{{payText}}</div>
+                    <div class="pay" :class="payClass" @click="payment(payText, totalPrice)">{{payText}}</div>
                 </div>
             </div>
             <transition name="move">
@@ -63,13 +63,13 @@ export default {
 
         // 通过计算已购食品来设置购物车不同的样式和提示文字
         payClass () {
-            const {totalPrice} = this
-            const {minPrice} = this.info
+            const {totalPrice} = this;
+            const {minPrice} = this.info;
             return totalPrice >= minPrice ? 'enough' : 'not-enough'
         },
         payText () {
-            const {totalPrice} = this
-            const {minPrice} = this.info
+            const {totalPrice} = this;
+            const {minPrice} = this.info;
             if (totalPrice === 0) {
                 return `￥${minPrice}元起送`
             } else if (totalPrice < minPrice) {
@@ -114,6 +114,11 @@ export default {
             }).catch((err) => {
                 console.log(err);
             });
+        },
+        payment (payText, totalPrice) {
+            if (payText === '结算') {
+              console.log('结算' + totalPrice + '元')
+            }
         }
     },
 }

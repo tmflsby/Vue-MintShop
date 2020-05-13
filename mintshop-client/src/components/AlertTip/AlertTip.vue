@@ -19,7 +19,7 @@ export default {
     },
     methods: {
       closeTip () {
-        // 分发自定义事件(事件名: closeTip)  子组件像父组件通信
+        // 分发自定义事件(事件名: closeTip)  子组件向父组件通信
         this.$emit('closeTip')
       }
     },

@@ -65,7 +65,7 @@ export default {
             color #999999
             &.on
                 color #02a774
-            span 
+            span
                 font-size 12px
                 margin-top 2px
                 margin-bottom 2px

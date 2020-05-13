@@ -4,53 +4,65 @@
             <div class="login_header">
                 <h2 class="login_logo">Mint外卖</h2>
                 <div class="login_header_title">
-                    <a href="javascript:;" :class="{on: loginWay}" @click="SMSVerification">短信验证</a>
-                    <a href="javascript:;" :class="{on: !loginWay}" @click="PasswordVerification">密码验证</a>
+                    <a href="javascript:" :class="{on: loginWay}" @click="SMSVerification">短信验证</a>
+                    <a href="javascript:" :class="{on: !loginWay}" @click="PasswordVerification">密码验证</a>
                 </div>
             </div>
             <div class="login_content">
                 <form @submit.prevent="login">
                     <div :class="{on: loginWay}">
                         <section class="login_message">
-                            <input type="tel" maxlength="11" placeholder="手机号" v-model="phone">
-                            <button :disabled='!rightPhone' class="get_verification" 
+                            <label>
+                                <input type="tel" maxlength="11" placeholder="手机号" v-model="phone">
+                            </label>
+                            <button :disabled='!rightPhone' class="get_verification"
                                     :class="{right_phone: rightPhone}" @click.prevent="getCode"
                             >{{computedTime > 0 ? `(${computedTime}s)已发送` : '获取验证码'}}</button>
                         </section>
                         <section class="login_verification">
-                            <input type="tel" maxlength="8" placeholder="验证码" v-model="code">
+                            <label>
+                                <input type="tel" maxlength="8" placeholder="验证码" v-model="code">
+                            </label>
                         </section>
                         <section class="login_hint">
                           温馨提示：未注册Mint外卖帐号的手机号，登录时将自动注册，且代表已同意
-                          <a href="javascript:;">《用户服务协议》</a>
+                          <a href="javascript:">《用户服务协议》</a>
                         </section>
                     </div>
                     <div :class="{on: !loginWay}">
                         <section>
                             <section class="login_message">
-                                <input type="text" maxlength="11" placeholder="手机/邮箱/用户名" v-model="name">
+                                <label>
+                                    <input type="text" maxlength="11" placeholder="手机/邮箱/用户名" v-model="name">
+                                </label>
                             </section>
                             <section class="login_verification">
-                                <input type="text" maxlength="8" placeholder="密码" v-if="showPwd" v-model="pwd">
-                                <input type="password" maxlength="8" placeholder="密码" v-else  v-model="pwd">
+                                <label v-if="showPwd">
+                                    <input type="text" maxlength="8" placeholder="密码" v-model="pwd">
+                                </label>
+                                <label v-else>
+                                    <input type="password" maxlength="8" placeholder="密码" v-model="pwd">
+                                </label>
                                 <div class="switch_button" :class="showPwd ? 'on' : 'off'" @click="isShowPwd">
                                     <div class="switch_circle" :class="{right: showPwd}"></div>
                                     <span class="switch_text">{{showPwd ? '显示' : '隐藏'}}</span>
                                 </div>
                             </section>
                             <section class="login_message">
-                              <input type="text" maxlength="11" placeholder="验证码" v-model="captcha">
-                              <img src="http://localhost:4000/captcha" alt="captcha" 
+                                <label>
+                                    <input type="text" maxlength="11" placeholder="验证码" v-model="captcha">
+                                </label>
+                                <img src="http://localhost:4000/captcha" alt="captcha"
                               class="get_verification" @click="getCaptcha" ref="captcha"
                               >
                             </section>
-                      </section>    
+                      </section>
                     </div>
                     <button class="login_submit">登录</button>
                 </form>
-                <a href="javascript:;" class="about_us">关于我们</a>
+                <a href="javascript:" class="about_us">关于我们</a>
             </div>
-            <a href="javascript:;" class="go_back" @click="$router.back()">
+            <a href="javascript:" class="go_back" @click="$router.back()">
               <i class="iconfont icon-arrow-left"></i>
             </a>
         </div>
@@ -97,11 +109,11 @@ export default {
         this.showPwd = !this.showPwd
       },
       showAlert (alertText) {
-        this.alertShow = true
+        this.alertShow = true;
         this.alertText = alertText
       },
       closeTip () {
-        this.alertShow = false
+        this.alertShow = false;
         this.alertText = ''
       },
       getCaptcha () {
@@ -112,9 +124,9 @@ export default {
         // 如果当前没有计时!this.computeTime等于this.computeTime === 0
         if(!this.computedTime) {
           //启动倒计时
-          this.computedTime = 30
+          this.computedTime = 30;
           this.intervalId = setInterval(() => {
-            this.computedTime--
+            this.computedTime--;
             if(this.computedTime <= 0) {
               //停止计时
               clearInterval(this.intervalId)
@@ -122,46 +134,46 @@ export default {
           }, 1000)
         }
         // 发送ajax请求（向指定手机号发送验证码短信）
-        const result = await reqSendCode(this.phone)
+        const result = await reqSendCode(this.phone);
         console.log(result);
         if(result.code === 1) {  //手机号验证失败
           //显示提示
-          this.showAlert(result.msg)
+          this.showAlert(result.msg);
           //停止计时
           if(this.computedTime) {
-            this.computedTime = 0
-            clearInterval(this.intervalId)
+            this.computedTime = 0;
+            clearInterval(this.intervalId);
             this.intervalId = undefined
           }
         }
       },
       async login () {
-        let result  // 保存登录成功后返回的数据
+        let result;  // 保存登录成功后返回的数据
 
         if(this.loginWay) { //短信登录
-          const {phone, code} = this
+          const {phone, code} = this;
           if(!this.rightPhone) {   //手机号不正确
-            this.showAlert('手机号不正确')
+            this.showAlert('手机号不正确');
             return
           } else if(!/^\d{6}$/.test(code)) {  //验证必须是6位数字
-            this.showAlert('验证必须是6位数字')
+            this.showAlert('验证必须是6位数字');
             return
           }
           //发送ajax请求短信登录
           result = await reqSmsLogin(phone, code)
         } else { //密码登录
-          const {name, pwd, captcha} = this
+          const {name, pwd, captcha} = this;
           if(!this.name) {
             //用户名必须指定
-            this.showAlert('用户名必须指定')
+            this.showAlert('用户名必须指定');
             return
           } else if(!this.pwd) {
             //密码必须指定
-            this.showAlert('密码必须指定')
+            this.showAlert('密码必须指定');
             return
           } else if(!this.captcha) {
             //验证码必须指定
-            this.showAlert('验证码必须指定')
+            this.showAlert('验证码必须指定');
             return
           }
           result = await reqPwdLogin(name, pwd, captcha)
@@ -169,24 +181,24 @@ export default {
 
         //停止计时
         if(this.computedTime) {
-          this.computedTime = 0
-          clearInterval(this.intervalId)
+          this.computedTime = 0;
+          clearInterval(this.intervalId);
           this.intervalId = undefined
         }
 
         // console.log(result);
         // 根据结果数据处理
         if(result.code === 0) {
-          const user = result.data
+          const user = result.data;
           // 将user保存到vuex的state
-          this.$store.dispatch('recordUser', user)
+          this.$store.dispatch('recordUser', user);
           //去个人中心界面
           this.$router.replace('/profile')
         } else {
           // 显示新的图片验证码
-          this.getCaptcha()
+          this.getCaptcha();
           //显示警告
-          const msg = result.msg
+          const msg = result.msg;
           this.showAlert(msg)
         }
 
