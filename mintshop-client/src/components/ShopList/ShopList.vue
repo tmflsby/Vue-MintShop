@@ -44,19 +44,19 @@
 
 <script>
 import Star from '@/components/Star/Star'
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 export default {
     name: 'ShopList',
     data() {
-      return {
-        baseImgUrl: './images/'
-      }
+        return {
+            baseImgUrl: './images/'
+        }
     },
     computed: {
-      ...mapState(['shops'])
+        ...mapState(['shops'])
     },
     components: {
-      Star
+        Star
     }
 
 }

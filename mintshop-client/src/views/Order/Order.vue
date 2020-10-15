@@ -7,7 +7,7 @@
                 <h3>登陆后查看外卖订单</h3>
                 <router-link to="/login" tag="button">立即登录</router-link>
             </section>
-            <section class="order_no_login" v-else>
+            <section class="order_login" v-else>
                 OrderLists 待开发
             </section>
         </section>
@@ -16,7 +16,7 @@
 
 <script>
 import HeaderTop from '@/components/HeaderTop/HeaderTop'
-import {mapState} from "vuex";
+import { mapState } from "vuex";
 export default {
     name: 'Order',
     components: {
@@ -79,4 +79,7 @@ export default {
         outline none
         border-radius 5px
         padding 10px 20px
+    .order_login
+      position relative
+
 </style>

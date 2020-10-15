@@ -99,8 +99,8 @@
 
 <script>
 import HeaderTop from '@/components/HeaderTop/HeaderTop'
-import {MessageBox, Toast} from 'mint-ui'
-import {mapState} from 'vuex';
+import { MessageBox, Toast } from 'mint-ui'
+import { mapState } from 'vuex';
 export default {
     name: 'Profile',
     components: {

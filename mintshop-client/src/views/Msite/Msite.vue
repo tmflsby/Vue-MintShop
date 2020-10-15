@@ -33,7 +33,6 @@
         </nav>
         <div class="msite_shop_list">
             <div class="shop_header">
-                <i class="iconfont icon-xuanxiang"></i>
                 <span class="shop_header_title">附近商家</span>
             </div>
             <ShopList></ShopList>
@@ -44,7 +43,7 @@
 <script>
 import HeaderTop from '@/components/HeaderTop/HeaderTop'
 import ShopList from '@/components/ShopList/ShopList'
-import { mapActions, mapState } from 'vuex'
+import { mapState } from 'vuex'
 export default {
     name: 'Msite',
     components: {
@@ -53,69 +52,50 @@ export default {
     },
     data() {
         return {
-          baseImageUrl: 'https://fuss10.elemecdn.com',
-          swiperOption: {
-              pagination: {
-                  el: '.swiper-pagination',
-                  clickable: true
-              },
-              autoplay: true,
-              loop: true
-          }
+            baseImageUrl: 'https://fuss10.elemecdn.com',
+            swiperOption: {
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true
+                },
+                autoplay: true,
+                loop: true
+            }
         }
     },
     computed: {
-      ...mapState(['address', 'categorys', 'userInfo']),
-      /**
-       * 根据categorys一维数组生成一个2维数组,小数组中的元素个数最大是8
-       */
-      categorysArr () {
-        const { categorys } = this;
-        const arr = [];
-        let minArr = [];
-        categorys.forEach(data => {
-          if (minArr.length === 8) {
-            minArr = []
-          }
-          if (minArr.length === 0) {
-            arr.push(minArr)
-          }
-          minArr.push(data)
-        });
-        return arr
-      },
-      // categorysArr () {
-      //   const {categorys} = this
-      //   const arr = []
-      //   for (let i = 0,len = categorys.length;i < len; i += 8){
-      //       arr.push(categorys.slice(i, i + 8))
-      //   }
-      //     return arr
-      // }
+        ...mapState(['address', 'categorys', 'userInfo']),
+        /**
+         * 根据categorys一维数组生成一个2维数组,小数组中的元素个数最大是8
+         */
+        // categorysArr () {
+        //     const { categorys } = this;
+        //     const arr = [];
+        //     let minArr = [];
+        //     categorys.forEach(data => {
+        //         if (minArr.length === 8) {
+        //             minArr = []
+        //         }
+        //         if (minArr.length === 0) {
+        //             arr.push(minArr)
+        //         }
+        //         minArr.push(data)
+        //     });
+        //     return arr
+        // },
+        categorysArr () {
+            const { categorys } = this;
+            const arr = [];
+            for (let i = 0; i < categorys.length; i += 8) {
+                arr.push(categorys.slice(i, i + 8));
+            }
+                return arr;
+        }
     },
-    // async mounted() {
-    //   this.getAddress()
-    // },
-    // methods: {
-    //   ...mapActions(['getAddress'])
-    // },
     mounted() {
-      this.$store.dispatch('getCategorys');
-      this.$store.dispatch('getShops')
-    },
-    // watch: {
-    //   categorys (value) {
-    //     this.$nextTick(() => {
-    //       new Swiper('.swiper-container', {
-    //         autoplay: true,
-    //         pagination: {
-    //           el: '.swiper-pagination',
-    //           clickable: true
-    //         }
-    //       })
-    //     })
-    //   }
-    // }
+        this.$store.dispatch('getCategorys');
+        this.$store.dispatch('getShops');
+    }
 }
 </script>
 

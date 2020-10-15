@@ -6,7 +6,7 @@
             <span></span>
           </div>
           <p class="tip_text">{{alertText}}</p>
-          <div class="confrim" @click="closeTip">确认</div>
+          <div class="confirm" @click="closeTip">确认</div>
         </section>
     </div>
 </template>
@@ -91,7 +91,7 @@ export default {
         text-align center
         margin-top 10px
         padding 0 5px
-      .confrim
+      .confirm
         font-size 18px
         font-weight bold
         margin-top 10px

@@ -9,6 +9,7 @@
 const CLASS_ON = 'on';
 const CLASS_HALF = 'half';
 const CLASS_OFF = 'off';
+
 export default {
     name: 'Star',
     props: {

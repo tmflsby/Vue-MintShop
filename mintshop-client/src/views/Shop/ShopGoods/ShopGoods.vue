@@ -2,11 +2,11 @@
     <div>
         <div class="goods">
             <!-- 左侧的菜单选项 -->
-            <div ref="menu-wrapper" class="menu-wrapper">
+            <div class="menu-wrapper">
                 <!-- 菜单对应的是食物分类列表-->
                 <ul>
                     <li class="menu-item" v-for="(good, index) in goods" :key="index"
-                    :class="{current: index === currentIndex}" @click="clickMenuItem(index)"
+                        :class="{current: index === currentIndex}" @click="clickMenuItem(index)"
                     >
                         <span class="text bottom-border-1px">
                             <img v-if="good.icon" :src="good.icon" alt="" class="icon">
@@ -16,7 +16,7 @@
                 </ul>
             </div>
             <!-- 右侧的食物列表 -->
-            <div ref="foods-wrapper" class="foods-wrapper">
+            <div class="foods-wrapper">
                 <!-- 右侧的食物列表是根据左侧的分类列表展现的-->
                 <!-- 所以右侧是在一个分类标题列表里面嵌套着各类食物列表-->
                 <ul ref="foodsUl">
@@ -25,7 +25,7 @@
                         <ul>
                             <!--为每个食品li添加点击事件 触发显示Food弹窗-->
                             <li class="food-item bottom-border-1px" v-for="(food, index) in good.foods"
-                            :key="index" @click="showFood(food)"
+                                :key="index" @click="showFood(food)"
                             >
                                 <div class="icon">
                                     <img width="57px" height="57px" :src="food.icon" alt="">
@@ -63,7 +63,7 @@ import ShopCart from '@/components/ShopCart/ShopCart'
 import Food from '@/components/Food/Food'
 import CartControl from '@/components/CartControl/CartControl'
 import BScroll from '@better-scroll/core'
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 export default {
     name: 'ShopGoods',
     components: {

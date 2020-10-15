@@ -17,7 +17,9 @@
                             </label>
                             <button :disabled='!rightPhone' class="get_verification"
                                     :class="{right_phone: rightPhone}" @click.prevent="getCode"
-                            >{{computedTime > 0 ? `(${computedTime}s)已发送` : '获取验证码'}}</button>
+                            >
+                                {{computedTime > 0 ? `(${computedTime}s)已发送` : '获取验证码'}}
+                            </button>
                         </section>
                         <section class="login_verification">
                             <label>
@@ -53,8 +55,8 @@
                                     <input type="text" maxlength="11" placeholder="验证码" v-model="captcha">
                                 </label>
                                 <img src="http://localhost:4000/captcha" alt="captcha"
-                              class="get_verification" @click="getCaptcha" ref="captcha"
-                              >
+                                     class="get_verification" @click="getCaptcha" ref="captcha"
+                                >
                             </section>
                       </section>
                     </div>
@@ -72,7 +74,7 @@
 
 <script>
 import AlertTip from '@/components/AlertTip/AlertTip';
-import {reqSendCode, reqSmsLogin, reqPwdLogin} from '@/api';
+import { reqSendCode, reqSmsLogin, reqPwdLogin } from '@/api';
 export default {
     name: 'Login',
     components: {

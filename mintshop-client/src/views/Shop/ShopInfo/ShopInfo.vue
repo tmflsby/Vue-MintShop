@@ -64,7 +64,7 @@
 
 <script>
 import BScroll from '@better-scroll/core'
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 export default {
     name: 'ShopInfo',
     data() {

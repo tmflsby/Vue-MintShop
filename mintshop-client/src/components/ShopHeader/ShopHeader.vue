@@ -82,8 +82,8 @@
                 <div class="activity-sheet-content">
                     <h2 class="activity-sheet-title">优惠活动</h2>
                     <ul class="list">
-                        <li class="activity-item" v-for="(support, index) in info.supports" 
-                        :key="index" :class="supportClasses[support.type]"
+                        <li class="activity-item" v-for="(support, index) in info.supports"
+                            :key="index" :class="supportClasses[support.type]"
                         >
                             <span class="content-tag">
                                 <span class="mini-tag">{{support.name}}</span>
@@ -102,7 +102,7 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 export default {
     name: 'ShopHeader',
     computed: {

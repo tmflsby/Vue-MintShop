@@ -9,20 +9,25 @@
 
 <script>
 import FooterGuide from '@/components/FooterGuide/FooterGuide'
-import {mapActions} from 'vuex';
+import { mapActions } from 'vuex';
 export default {
   components: {
     FooterGuide
   },
-  async mounted() {
-    // 通过this.$store.dispatch 方法触发调用Action
-    this.$store.dispatch('getAddress');
+  mounted() {
+    //触发调用Action方法的方式
 
-    // this.getAddress()
-    this.getUserInfo()
+    //第一种方法： 通过this.$store.dispatch
+    this.$store.dispatch('getAddress');
+    // this.$store.dispatch('getUserInfo');
+
+    // 第二种方法：mapActions 语法糖
+    // this.getAddress();
+    this.getUserInfo();
+
   },
   methods: {
-    ...mapActions(['getUserInfo'])
+    ...mapActions(['getAddress', 'getUserInfo'])
   }
 }
 </script>

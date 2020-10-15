@@ -1,5 +1,5 @@
 <template>
-    <div class="ratings" ref="ratings">
+    <div class="ratings">
         <div class="ratings-content">
             <div class="overview">
                 <div class="overview-left">
@@ -74,7 +74,7 @@
 <script>
 import BScroll from '@better-scroll/core'
 import Star from '@/components/Star/Star'
-import {mapGetters, mapState} from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 export default {
     name: 'ShopRatings',
     components: {
@@ -113,7 +113,7 @@ export default {
         //为getShopRatings这个action添加回调函数
         this.$store.dispatch('getShopRatings', () => {
             this.$nextTick(() => {
-                this.bscroll = new BScroll(this.$refs.ratings, {
+                this.bscroll = new BScroll('.ratings', {
                     click: true
                 })
             })

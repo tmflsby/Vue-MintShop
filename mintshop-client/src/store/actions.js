@@ -65,6 +65,7 @@ export default {
     // 异步获取商家评论列表
     async getShopRatings ({commit}, callback) {
         const result = await api.reqShopRatings();
+        // console.log(result);
         if (result.code === 0) {
             const ratings = result.data;
             commit(mutationsTypes.RECEIVE_RATINGS, {ratings});
@@ -75,6 +76,7 @@ export default {
     // 异步获取商家商品列表
     async getShopGoods ({commit}, callback) {
         const result = await api.reqShopGoods();
+        // console.log(result);
         if (result.code === 0) {
             const goods = result.data;
             commit(mutationsTypes.RECEIVE_GOODS, {goods});

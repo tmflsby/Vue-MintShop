@@ -110,7 +110,8 @@ export default {
         },
         clearCart () {
             MessageBox.confirm('确定清空购物车吗？').then((result) => {
-                this.$store.dispatch('clearCart')
+                console.log(result);
+                this.$store.dispatch('clearCart');
             }).catch((err) => {
                 console.log(err);
             });

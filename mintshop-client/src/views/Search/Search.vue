@@ -2,13 +2,15 @@
     <div class="search">
         <HeaderTop title="搜索"></HeaderTop>
         <form action="" class="search_form" @submit.prevent="search">
-            <input type="search" class="search_input" placeholder="请输入商家或美食名称" v-model.trim="keyword">
+            <label>
+                <input type="search" class="search_input" placeholder="请输入商家或美食名称" v-model.trim="keyword">
+            </label>
             <input type="submit" class="search_submit">
         </form>
-        <section class="list" ref="list">
+        <section class="list">
             <ul class="list_container" v-if="!noSearchShops">
                 <router-link tag="li" :to="{path:'/shop', query:{id: item.id}}"
-                v-for="item in searchShops" :key="item.id" class="list_li"
+                             v-for="item in searchShops" :key="item.id" class="list_li"
                 >
                     <section class="item_left">
                         <img :src="imgBaseUrl + item.image_path" alt="" class="restaurant_img">
@@ -22,14 +24,14 @@
                     </section>
                 </router-link>
             </ul>
-                <div class="search_none" v-else>很抱歉！无搜索结果</div>
+            <div class="search_none" v-else>很抱歉！无搜索结果</div>
         </section>
     </div>
 </template>
 
 <script>
 import BScroll from '@better-scroll/core'
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 import HeaderTop from '@/components/HeaderTop/HeaderTop'
 export default {
     name: 'Search',
@@ -66,7 +68,7 @@ export default {
                     keyword,
                     callback: () => {
                         this.$nextTick(() => {
-                            new BScroll(this.$refs.list, {
+                            new BScroll('.list', {
                                 click: true
                             })
                         })
@@ -81,11 +83,7 @@ export default {
     },
     watch: {
         searchShops (value) {
-            if (!value.length) { // 没有数据
-                this.noSearchShops = true
-            } else {  //有数据
-                this.noSearchShops = false
-            }
+            this.noSearchShops = !value.length;
         }
     }
 }
@@ -149,6 +147,8 @@ export default {
                 &:last-child
                   margin-bottom 0
     .search_none
+      height: 30px
+      line-height 30px
       margin: 0 auto
       color: #333
       background-color: #fff
